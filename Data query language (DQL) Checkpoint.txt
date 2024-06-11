@@ -1,0 +1,33 @@
+1. 
+Select * from Customer
+
+2.
+Select product_name , category from Product where price Between 5000 AND 10000
+
+3. 
+Select * from Product ORDER BY Price DESC
+
+4. 
+SELECT count(*) , AVG(total_amount) , MAX(total_amount), MIN(total_amount) from Orders GROUP by product_id
+
+5.
+SELECT customer_id from orders GROUP BY customer_id HAVING count(*)>2
+
+6.
+SELECT EXTRACT( MONTH FROM order_date) , count(*) from orders WHERE EXTRACT(YEAR from order_date) = 2020 
+GROUP BY EXTRACT(MONTH from order_date) 
+
+7.
+
+SELECT product.product_name, customer.customer_name , orders.orderDate from orders
+JOIN product on orders.product_id = product.product_id
+JOIN customer on orders.customer_id = customer.customer_id
+
+8. 
+Select * from orders where orderDate >= ADDMONTHS(SYSDATE,-3)
+
+9. 
+
+SELECT customer.customer_id , customer.customer_name from customer
+JOIN orders on customer.customer_id = orders.customer_id
+WHERE order_id IS NULL
